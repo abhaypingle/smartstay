@@ -2,7 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 from flask_migrate import Migrate
 from extensions import db
-
+from models import User, OwnerProfile, Property, Room, PropertyImage, Amenity, PropertyAmenity, Favorite, VisitRequest, Report
 app = Flask(__name__)
 CORS(app, origins=["http://localhost:5173"])
 
