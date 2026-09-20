@@ -1,8 +1,16 @@
 from flask import Flask
 from flask_cors import CORS
+from flask_migrate import Migrate
+from extensions import db
 
 app = Flask(__name__)
 CORS(app, origins=["http://localhost:5173"])
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://smartstay_user:smartstay_pass@127.0.0.1:5433/smartstay_db'
+db.init_app(app)
+migrate = Migrate(app, db)
+
+from models import User
 
 @app.route('/')
 def home():
